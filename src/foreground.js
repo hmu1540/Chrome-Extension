@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+const fs = require('fs');
+
 // If permissions are correct, this script should run
 console.log('We have accessed the foreground.');
 
@@ -29,45 +30,27 @@ for (let i = 0; i < qsImg.length; i++) {
 const imgSrcsSelect = [];
 let countSelect = 0;
 const maxSelect = 8;
-window.addEventListener('click', e => {
-    if (countSelect < maxSelect) {
-        imgSrcsSelect.push(e.target.currentSrc);
-        countSelect++;
-    }
-    else console.log(imgSrcsSelect);
+while (true) {
+  window.addEventListener('click', e => {
+      imgSrcsSelect.push(e.target.currentSrc);
+      countSelect++;
+  if (countSelect > maxSelect) {
+      console.log('data written????');
+      fs.writeFileSync('./data/srcImags.json', imgSrcsSelect, (err) => {
+        // In case of a error throw err.
+        if (err) throw err;
+        else break;
+        );
+    };
 });
-
+}
 
 
 
 /* download by */
 
 
-chrome.storage.local.set({ 'images': imgSrcs });
+// chrome.storage.local.set({ 'images': imgSrcs });
 
 
 
-=======
-console.log("We have accessed the foreground.");const qsImg=document.querySelectorAll("img"),imgSrcs=[];for(let e=0;e<qsImg.length;e++)imgSrcs.push(qsImg[e].src);
-chrome.storage.local.set({images:imgSrcs});
-
-// let test = 'hello';
-// chrome.runtime.sendMessage(test)
-
-// chrome.runtime.sendMessage(
-//   { type: 'array', data: imgSrcs },
-//   res => console.log('React loaded images: ', res.message)
-// );
-
-chrome.runtime.onConnect.addListener((port) => {
-  console.assert(port.name === 'arrayFlow');
-  port.onMessage.addListener((req) => {
-    if(req.message == 'arrayRequest') {
-      port.postMessage({ type: 'array', data: imgSrcs })
-    }
-  });
-  return true;
-});
-
-module.exports = imgSrcs;
->>>>>>> 121b7abb3d1c35e248e06f6acc714324ce7233dd
