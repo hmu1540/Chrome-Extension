@@ -15,5 +15,9 @@ chrome.tabs.onActivated.addListener(tab => {
     chrome.tabs.insertCSS(null, { file: './styles.css' })
     chrome.tabs.executeScript(null, { file: './foreground.js' }, () => console.log('Attempting to inject foreground.'));
   });
+<<<<<<< HEAD
 });
 
+=======
+});
+>>>>>>> 121b7abb3d1c35e248e06f6acc714324ce7233dd
