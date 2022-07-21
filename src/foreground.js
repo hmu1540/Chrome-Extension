@@ -23,15 +23,18 @@ for (let i = 0; i < qsImg.length; i++) {
     }
 
 }
-console.log("user choice =>", imgSrcs);
-/* download by clicking */
-
-// console.log(imgSrcs);
-
-
-
-
-
+// console.log("user choice =>", imgSrcs);
+/* download by selecting */
+const imgSrcsSelect = [];
+let countSelect = 0;
+const maxSelect = 8;
+window.addEventListener('click', e => {
+    if (countSelect < maxSelect) {
+        imgSrcsSelect.push(e.target.currentSrc);
+        countSelect++;
+    }
+    else console.log(imgSrcsSelect);
+});
 
 
 
